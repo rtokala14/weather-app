@@ -1,7 +1,7 @@
 import { unitMode } from "./index.js";
 
 async function getCoords(location) {
-  const requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=20f7632ffc2c022654e4093c6947b4f4`;
+  const requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${unitMode}&appid=20f7632ffc2c022654e4093c6947b4f4`;
   const reponse = await fetch(requestURL, { mode: "cors" });
   const basicData = await reponse.json();
   return basicData;

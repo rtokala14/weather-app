@@ -2,6 +2,8 @@ import "./style.css";
 import { getDataFromLocation } from "./weatherAPIFunctions";
 import { displayData } from "./domFunctions";
 let unitMode = "metric";
+const metricTemp = "\u00b0C";
+let currTemp = metricTemp;
 
 const searchForm = document.getElementById("enterWeatherLocation");
 
@@ -17,7 +19,7 @@ async function searchWeather() {
   searchForm.reset();
 }
 
-export { unitMode };
+export { unitMode, currTemp };
 
 window.onload = async () => {
   let data = await getDataFromLocation("dubai");
