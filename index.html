@@ -48,13 +48,30 @@
       </div>
   </div>
 
-  <div id="main-content">
-    <div id="current-forecast">
-      <div id="summary">
+  <div class="flex flex-col gap-10" id="main-content">
+    <div class="flex justify-evenly" id="current-forecast">
+      <div class="flex flex-col border-black border-2 rounded-md p-4" id="summary">
+        <div class="flex justify-between items-center" id="summary-header">
+          <div class="flex flex-col " id="summary-left">
+            <h2 class="text-xl font-semibold ">Dubai</h2>
+            <h4 class="text-base font-medium ">Mostly Sunny</h4>
+          </div>
 
+          <div id="summary-right">
+            <p class="text-base font-medium">Feels like: 30&#176C</p>
+          </div>
+        </div>
+
+        <div class="p-2 gap-4 flex flex-col items-center" id="summary-main">
+          <span class="text-7xl font-bold " id="main-temp">29&#176C</span> 
+          <div class="flex" id="summary-bottom">
+            <h5 class="p-4 text-xl border-r border-black" id="min-temp">Min: 31&#176C</h5>
+            <h5 class="p-4 text-xl " id="max-temp">Max: 25&#176C</h5>
+          </div> 
+        </div>
       </div>
 
-      <div id="map-container">
+      <div class="border-black border-2 rounded-md p-4" id="map-container">
 
       </div>
     </div>
