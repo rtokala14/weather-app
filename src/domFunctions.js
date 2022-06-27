@@ -1,5 +1,21 @@
 import Icon from "./media/main-logo.png";
-import { currTemp } from "./index";
+import { currCity, currTemp, unitMode } from "./index";
+import { getDataFromLocation } from "./weatherAPIFunctions";
+
+const unitButton = document.getElementById("unitButton");
+unitButton.onclick = async () => {
+  if (unitMode == "metric") {
+    unitMode = "imperial";
+    currTemp = "\u00b0F";
+    unitButton.textContent = "\u00b0F";
+  } else if (unitMode == "imperial") {
+    unitMode = "metric";
+    currTemp = "\u00b0C";
+    unitButton.textContent = "\u00b0C";
+  }
+  let data = await getDataFromLocation(currCity);
+  displayData(data.basic, data.advanced);
+};
 
 function initalize() {
   const titleIcon = document.querySelector("#title-icon");

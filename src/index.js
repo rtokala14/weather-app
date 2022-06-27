@@ -3,7 +3,9 @@ import { getDataFromLocation } from "./weatherAPIFunctions";
 import { displayData } from "./domFunctions";
 let unitMode = "metric";
 const metricTemp = "\u00b0C";
+const imperialTemp = "\u00b0F";
 let currTemp = metricTemp;
+let currCity = "Dubai";
 
 const searchForm = document.getElementById("enterWeatherLocation");
 
@@ -15,11 +17,12 @@ searchForm.onsubmit = (e) => {
 async function searchWeather() {
   const searchBox = document.getElementById("cityName");
   const weatherData = await getDataFromLocation(searchBox.value);
+  currCity = weatherData.basic.name;
   displayData(weatherData.basic, weatherData.advanced);
   searchForm.reset();
 }
 
-export { unitMode, currTemp };
+export { unitMode, currTemp, currCity };
 
 window.onload = async () => {
   let data = await getDataFromLocation("dubai");
