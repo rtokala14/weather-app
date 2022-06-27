@@ -5,17 +5,17 @@ let unitMode = "metric";
 
 const searchForm = document.getElementById("enterWeatherLocation");
 
-/*searchForm.onsubmit = (e) => {
+searchForm.onsubmit = (e) => {
   e.preventDefault();
   searchWeather();
-};*/
+};
 
-/*async function searchWeather() {
+async function searchWeather() {
   const searchBox = document.getElementById("cityName");
   const weatherData = await getDataFromLocation(searchBox.value);
   displayData(weatherData.basic, weatherData.advanced);
   searchForm.reset();
-}*/
+}
 
 export { unitMode };
 

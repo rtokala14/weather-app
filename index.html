@@ -23,20 +23,29 @@
   <meta name="theme-color" content="#ffffff">
   <title>Weather App</title>
 </head>
-<body>
-  <div id="header">
-    <div id="left-content">
-      <img id="title-icon" alt="Logo">
+<body class="flex flex-col min-h-screen p-2">
+  <div class="flex justify-between items-center" id="header">
+    <div class="flex items-center gap-3" id="left-content">
+      <img class="w-16" id="title-icon" alt="Logo">
 
-      <div id="greeting">
-        <h1>Weather Forecast</h1>
-        <h3 id="today-date"></h3>
+      <div class="flex flex-col" id="greeting">
+        <h1 class="text-3xl font-bold ">Weather Forecast</h1>
+        <h3 class="text-xl font-semibold" id="today-date"></h3>
       </div>
     </div>
 
-    <div id="right-content">
+    <div class="flex items-center gap-2" id="right-content">
+      <form class="flex items-center p-2 border-black border-2 rounded-lg" id="enterWeatherLocation">
+        <input class="focus:outline-0" type="text" name="cityName" id="cityName" placeholder="Search City Name">
+        <button type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </form>
 
-    </div>
+      <button class="border-black border-2 p-1 pl-3 pr-3 text-xl text-center rounded-md" id="unitButton">&#176C</button>
+      </div>
   </div>
 
   <div id="main-content">
