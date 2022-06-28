@@ -1,6 +1,9 @@
 import Icon from "./media/main-logo.png";
 import { currCity, currTemp, unitMode } from "./index";
 import { getDataFromLocation } from "./weatherAPIFunctions";
+import { displayMapInit } from "./mapFunctions";
+
+let map = null;
 
 const unitButton = document.getElementById("unitButton");
 unitButton.onclick = async () => {
@@ -17,9 +20,11 @@ unitButton.onclick = async () => {
   displayData(data.basic, data.advanced);
 };
 
-function initalize() {
+function initalize(lat, lon) {
   const titleIcon = document.querySelector("#title-icon");
   titleIcon.src = Icon;
+
+  map = displayMapInit(lat, lon);
 }
 
 function disCurrTime(unixTime) {
@@ -58,12 +63,35 @@ function displaySummary(basic, advanced) {
   max_temp.textContent = `Max: ${Math.round(basic.main.temp_max)}${currTemp}`;
 }
 
+function addEntry(text) {
+  const item = document.createElement("div");
+  item.className = "text-lg p-4";
+  item.textContent = text;
+  return item;
+}
+
+function displayAdditional(data) {
+  const container = document.getElementById("additional-info");
+
+  container.textContent = "";
+
+  container.appendChild(addEntry(`Humidity: ${data.main.humidity}%`));
+  let time = new Date(data.sys.sunrise * 1000);
+  container.appendChild(addEntry(`Sunrise: ${time.toTimeString()}`));
+  let time2 = new Date(data.sys.sunset * 1000);
+  container.appendChild(addEntry(`Sunset: ${time2.toTimeString()}`));
+  container.appendChild(addEntry(`Wind Speed: ${data.wind.speed}`));
+}
+
 function displayData(basic, advanced) {
-  initalize();
   disCurrTime(advanced.current.dt);
   console.log(basic, advanced);
 
   displaySummary(basic, advanced);
+
+  displayAdditional(basic);
+
+  map.panTo([basic.coord.lat, basic.coord.lon]);
 }
 
-export { displayData };
+export { displayData, initalize };

@@ -21,6 +21,9 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/src/media/b3efa64ce98df5173a005d08ce80686f.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <title>Weather App</title>
 </head>
 <body class="flex flex-col min-h-screen p-2">
@@ -49,8 +52,8 @@
   </div>
 
   <div class="flex flex-col gap-10" id="main-content">
-    <div class="flex justify-evenly" id="current-forecast">
-      <div class="flex flex-col gap-6 border-black border-2 rounded-md p-10" id="summary">
+    <div class="flex justify-evenly gap-6" id="current-forecast">
+      <div class="flex flex-col gap-6 border-black border-2 rounded-md p-10 flex-1" id="summary">
         <div class="flex justify-between items-center" id="summary-header">
           <div class="flex flex-col " id="summary-left">
             <h2 class="text-2xl font-semibold " id="summary-city"></h2>
@@ -71,7 +74,11 @@
         </div>
       </div>
 
-      <div class="border-black border-2 rounded-md p-4" id="map-container">
+      <div class="border-black border-2 rounded-md p-4 flex-1" id="additional-info">
+
+      </div>
+
+      <div class="border-black border-2 rounded-md p-4 flex-1" id="map-container">
 
       </div>
     </div>
